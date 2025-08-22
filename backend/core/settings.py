@@ -174,6 +174,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_METHODS = True
 CORS_ALLOW_ALL_HEADERS = True
-
+CORS_ALLOWED_ORIGINS = [
+    "https://khattati.pages.dev",*
+]
 # CSRF Settings
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='https://mydomain.com').split(',')
