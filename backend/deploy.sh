@@ -17,6 +17,9 @@ fi
 export DJANGO_SETTINGS_MODULE=core.settings
 export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 
+echo "📊 Running database makemigrations..."
+python manage.py makemigrations --noinput
+
 echo "📊 Running database migrations..."
 python manage.py migrate --noinput
 
