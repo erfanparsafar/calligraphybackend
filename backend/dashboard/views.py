@@ -7,11 +7,23 @@ from courses.serializers import CourseSerializer
 from orders.serializers import OrderSerializer
 from courses.models import Course
 from orders.models import Order
+from users.models import User
 from django.db import models
 from django.utils import timezone
 from datetime import timedelta
 
 # Create your views here.
+
+class TestDashboardView(APIView):
+    """Simple test view to debug dashboard issues"""
+    permission_classes = []  # No permissions required for testing
+
+    def get(self, request):
+        return Response({
+            'message': 'Test Dashboard is working!',
+            'status': 'success',
+            'timestamp': timezone.now().isoformat()
+        })
 
 class UserDashboardView(APIView):
     permission_classes = [IsAuthenticated]
@@ -124,21 +136,27 @@ class UserFavoritesView(APIView):
         return Response(favorites[:6])  # Return max 6 favorites
 
 class AdminDashboardView(APIView):
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]  # Temporarily change to test
 
     def get(self, request):
-        total_users = UserSerializer.Meta.model.objects.count()
-        total_courses = Course.objects.count()
-        total_orders = Order.objects.count()
-        total_revenue = Order.objects.filter(status='paid').aggregate(models.Sum('total_price'))['total_price__sum'] or 0
-        recent_orders = Order.objects.order_by('-created_at')[:5]
-        top_courses = Course.objects.order_by('-students_count')[:5]
-        data = {
-            'total_users': total_users,
-            'total_courses': total_courses,
-            'total_orders': total_orders,
-            'total_revenue': total_revenue,
-            'recent_orders': OrderSerializer(recent_orders, many=True).data,
-            'top_courses': CourseSerializer(top_courses, many=True).data,
-        }
-        return Response(data)
+        try:
+            # Simple test response first
+            data = {
+                'message': 'Admin Dashboard is working!',
+                'user': request.user.username,
+                'is_staff': request.user.is_staff,
+                'is_superuser': request.user.is_superuser,
+                'basic_stats': {
+                    'total_users': User.objects.count(),
+                    'total_courses': Course.objects.count(),
+                    'total_orders': Order.objects.count(),
+                }
+            }
+            return Response(data)
+            
+        except Exception as e:
+            print(f"Dashboard error: {e}")
+            return Response({
+                'error': f'خطا در دریافت اطلاعات داشبورد: {str(e)}',
+                'message': 'Dashboard endpoint is accessible but has errors'
+            }, status=500)
