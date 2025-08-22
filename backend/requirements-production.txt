@@ -35,7 +35,3 @@ python-dateutil==2.9.0.post0
 
 # Documentation
 drf-yasg==1.21.10
-
-# Additional Production Packages
-django-filter==25.1
-django-storages==1.14.6

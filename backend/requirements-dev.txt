@@ -1,0 +1,59 @@
+# Development Requirements for Calligraphy Backend
+# Includes all packages for development and testing
+
+# Production Requirements
+-r requirements-production.txt
+
+# Development Tools
+ipython==9.2.0
+ipython_pygments_lexers==1.1.1
+ipywidgets==8.1.6
+jedi==0.19.2
+
+# Data Science & Analysis
+numpy==2.2.0
+pandas==2.2.3
+matplotlib==3.10.0
+matplotlib-inline==0.1.7
+scikit-learn==1.6.0
+scikit-fuzzy==0.5.0
+scipy==1.14.1
+
+# Machine Learning
+imbalanced-learn==0.13.0
+imblearn==0.0
+joblib==1.4.2
+
+# Web Scraping & Automation
+selenium==4.28.1
+beautifulsoup4==4.13.3
+bs4==0.0.2
+webdriver-manager==4.0.2
+
+# Cloud & Infrastructure
+boto3==1.38.1
+botocore==1.38.1
+cloudflare==4.3.1
+cloudflared==1.0.0.2
+
+# Additional Utilities
+jdatetime==5.2.0
+jalali_core==1.0.0
+django-jalali==7.4.0
+django-otp==1.5.4
+django-redis==5.4.0
+redis==6.1.0
+
+# Testing & Debugging
+pytest==7.4.0
+pytest-django==4.5.2
+factory-boy==3.3.0
+
+# Code Quality
+black==23.3.0
+flake8==6.0.0
+isort==5.12.0
+
+# Documentation
+sphinx==7.1.2
+sphinx-rtd-theme==1.3.0
