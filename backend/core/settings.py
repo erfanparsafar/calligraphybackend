@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
         "default": dj_database_url.config(
             default=os.environ.get("DATABASE_URL"),  # از لیارا این مقدار ست میشه
-            DATABASE_URL = postgresql://erfan:b1G3yHJ63Hdwvg8mL4HKIDGpUSlOtiur@dpg-d2k94gumcj7s73a2p10g-a/khattatidb
+            DATABASE_URL = "postgresql://erfan:b1G3yHJ63Hdwvg8mL4HKIDGpUSlOtiur@dpg-d2k94gumcj7s73a2p10g-a/khattatidb"
             conn_max_age=600,
             
         )
