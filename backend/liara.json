@@ -1,0 +1,12 @@
+{
+    "platform": "django",
+    "django": {
+      "pythonVersion": "3.12",
+      "collectStatic": true,
+      "compileMessages": false,
+      "modifySettings": true,
+      "timezone": "Asia/Tehran"
+      
+    },
+    "app": "caligraphyback"
+  }
